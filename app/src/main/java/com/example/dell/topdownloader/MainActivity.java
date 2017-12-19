@@ -22,6 +22,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnParse;
+    private String mFileContents;
     private ListView listApps;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
        btnParse.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+
+               ParseApplication parseApplications = new ParseApplication(mFileContents);
+               ParseApplication.process();
 
            }
        });
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class DownloadData extends AsyncTask<String, Void, String> {
 
-        private String mFileContents;
+
 
         @Override
         protected String doInBackground(String... strings) {
